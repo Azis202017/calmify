@@ -19,6 +19,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::middleware(['auth:sanctum','psikolog'])->group(function() {
+    Route::post('/article/add', [ArticleController::class,'store']);
+    Route::put('/article/ubah/{id}', [ArticleController::class,'update']);
+
 
 });
 Route::middleware('auth:sanctum')->group(function() {
@@ -34,6 +37,5 @@ Route::get('/psikolog',[PsikologController::class,'index']);
 Route::get('/category',[CategoryController::class,'index']);
 Route::post('/category/add', [CategoryController::class,'store']);
 Route::get('/article', [ArticleController::class,'index']);
-Route::post('/article/add', [ArticleController::class,'store']);
 
 
