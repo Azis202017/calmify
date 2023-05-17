@@ -16,10 +16,10 @@ class Psikolog
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user() && Auth::user()->roles=="psikolog") {
-
+        if(Auth::user() && Auth::user()->role="psikolog"){
             return $next($request);
+
         }
-        return response()->json(['message' => 'anda tidak di perbolehkan akses ini'],403);
+        return response()->json(['message' => 'Anda dilarang disini'], 403);
     }
 }
