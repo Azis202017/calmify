@@ -36,4 +36,25 @@ class ArticleController extends Controller
             ], 502);
         }
     }
+    public function update(Request $request,$id) {
+        try {
+            $article =  Article::find($id);
+
+            $article->id_user = $request->id_user;
+            $article->id_category = $request->id_category;
+            $article->title = $request->title;
+            $article->description = $request->description;
+
+            $article->save();
+
+            return response()->json([
+                "message" => "Succes menambahkan article",
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                "message" => "gagal ditambahkan",
+                "error" => $e->getMessage()
+            ], 502);
+        }
+    }
 }
