@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::middleware(['auth:sanctum','dokter'])->group(function() {
+Route::middleware(['auth:sanctum','psikolog'])->group(function() {
 
 });
 Route::middleware('auth:sanctum')->group(function() {
