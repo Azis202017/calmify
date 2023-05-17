@@ -9,4 +9,7 @@ class Category extends Model
 {
     use HasFactory;
     protected $fillable = ['categoryName'];
+    public function article() {
+        return $this->hasOne(Article::class,'id_user','id');
+    }
 }

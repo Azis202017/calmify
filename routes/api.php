@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MetodePembayaranController;
 use App\Http\Controllers\PsikologController;
@@ -28,6 +29,11 @@ Route::middleware('auth:sanctum')->group(function() {
 Route::post('register',[UserController::class,'register']);
 Route::post('login',[UserController::class,'login']);
 Route::post('/metode/add', [MetodePembayaranController::class,'store']);
-Route::get('/metode/show', [MetodePembayaranController::class,'index']);
+Route::get('/metode', [MetodePembayaranController::class,'index']);
 Route::get('/psikolog',[PsikologController::class,'index']);
 Route::get('/category',[CategoryController::class,'index']);
+Route::post('/category/add', [CategoryController::class,'store']);
+Route::get('/article', [ArticleController::class,'index']);
+Route::post('/article/add', [ArticleController::class,'store']);
+
+
