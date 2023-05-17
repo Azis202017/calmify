@@ -57,4 +57,9 @@ class ArticleController extends Controller
             ], 502);
         }
     }
+
+    public function getArticleUser($id) {
+        $article = Article::where('id_user', $id)->get();
+        return response()->json($article,200);
+    }
 }
