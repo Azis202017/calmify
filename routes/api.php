@@ -21,8 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum','psikolog'])->group(function() {
     Route::post('/article/add', [ArticleController::class,'store']);
     Route::put('/article/ubah/{id}', [ArticleController::class,'update']);
-
-
+    Route::get('/article/user/{userID}',[ArticleController::class,'getArticleUser']);
 });
 Route::middleware('auth:sanctum')->group(function() {
     Route::get('/user', [UserController::class, 'index']);
