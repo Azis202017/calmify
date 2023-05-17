@@ -8,11 +8,13 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    public function index() {
-       $article =  Article::with(['users','category'])->get();
-       return response()->json(['data' => $article]);
+    public function index()
+    {
+        $article =  Article::with(['users', 'category'])->get();
+        return response()->json(['data' => $article]);
     }
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         try {
             $file = $request->imgUrl->store('/foto_article');
             $article = new Article();
@@ -36,7 +38,8 @@ class ArticleController extends Controller
             ], 502);
         }
     }
-    public function update(Request $request,$id) {
+    public function update(Request $request, $id)
+    {
         try {
             $article =  Article::find($id);
 
@@ -58,8 +61,24 @@ class ArticleController extends Controller
         }
     }
 
-    public function getArticleUser($id) {
+    public function getArticleUser($id)
+    {
         $article = Article::where('id_user', $id)->get();
-        return response()->json($article,200);
+        return response()->json($article, 200);
+    }
+    public function delete($id)
+    {
+        try {
+            $article = Article::find($id);
+            $article->delete();
+            return response()->json([
+                "message" => "Succes menghapus article",
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                "message" => "gagal menghapus article",
+                "error" => $e->getMessage()
+            ], 502);
+        }
     }
 }
