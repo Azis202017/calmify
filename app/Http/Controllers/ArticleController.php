@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Models\Article;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -11,7 +12,16 @@ class ArticleController extends Controller
     public function index()
     {
         $article =  Article::with(['users', 'category'])->get();
-        return response()->json(['data' => $article]);
+        Str::macro('readDuration', function (...$text) {
+            $totalWords = str_word_count(implode(" ", $text));
+            $minutesToRead = round($totalWords / 200);
+
+            return (int)max(1, $minutesToRead);
+        });
+        foreach ($article as $artc) {
+
+            return response()->json(['data' => $article,  'readTime' => Str::readDuration($artc->description) . ' menit untuk baca',], 200);
+        }
     }
     public function store(Request $request)
     {
@@ -42,12 +52,10 @@ class ArticleController extends Controller
     {
         try {
             $article =  Article::find($id);
-
             $article->id_user = $request->id_user;
             $article->id_category = $request->id_category;
             $article->title = $request->title;
             $article->description = $request->description;
-
             $article->save();
 
             return response()->json([
@@ -64,7 +72,7 @@ class ArticleController extends Controller
     public function getArticleUser($id)
     {
         $article = Article::where('id_user', $id)->get();
-        return response()->json($article, 200);
+        return response()->json(['data' => $article, 'app_url' => env('APP_URL'),], 200);
     }
     public function delete($id)
     {
