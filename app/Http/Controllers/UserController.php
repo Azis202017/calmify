@@ -57,12 +57,26 @@ class UserController extends Controller
                 'email' => ['required', 'string', 'email', 'max:255',],
             ]);
 
-            User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'role' => $request->role,
-            ]);
+            if ($request->role == "psikolog") {
+                $ijazah = $request->ijazah->store('/ijazah');
+                $sertifikasi = $request->sertifikasi->store('sertifikasi');
+                User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'role' => $request->role,
+                    'ijazah' => $ijazah,
+                    'sertifikasi' => $sertifikasi,
+                ]);
+            } else {
+                User::create([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'password' => Hash::make($request->password),
+                    'role' => $request->role,
+                ]);
+            }
+
 
             $user = User::where('email', $request->email)->first();
 
