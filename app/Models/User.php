@@ -29,7 +29,9 @@ class User extends Authenticatable
         'password',
         'ijazah',
         'role',
-        'sertifikasi'
+        'sertifikasi',
+        'spesialisasi',
+        'biography'
     ];
 
     /**

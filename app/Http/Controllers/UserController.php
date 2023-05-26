@@ -67,6 +67,8 @@ class UserController extends Controller
                     'role' => $request->role,
                     'ijazah' => $ijazah,
                     'sertifikasi' => $sertifikasi,
+                    'spesialisasi' => $request->spesialisasi,
+                    'biography' => $request->biography,
                 ]);
             } else {
                 User::create([
