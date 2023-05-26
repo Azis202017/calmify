@@ -15,23 +15,18 @@ return [
     |
     */
 
-    'paths' => ['*', 'sanctum/csrf-cookie'],
+    'paths' => ['*'],
 
     'allowed_methods' => ['*'],
 
     'allowed_origins' => ['*'],
 
-    'allowed_origins_patterns' => [],
+    'allowed_origins_patterns' => ['*'],
 
     'allowed_headers' => ['*'],
 
     'exposed_headers' => [
-        'Cache-Control',
-        'Content-Language',
-        'Content-Type',
-        'Expires',
-        'Last-Modified',
-        'Pragma',
+        '*'
     ],
 
     'max_age' => 60 * 60 * 2,
