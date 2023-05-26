@@ -15,6 +15,8 @@ return new class extends Migration
             $table->enum('role', ['pengguna', 'psikolog']);
             $table->string('ijazah')->nullable();
             $table->string('sertifikasi')->nullable();
+            $table->string('spesialisasi')->nullable();
+            $table->longText('biography')->nullable();
         });
     }
 
