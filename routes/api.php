@@ -15,6 +15,8 @@ Route::middleware(['auth:sanctum','psikolog'])->group(function() {
     Route::delete('/article/{id}', [ArticleController::class,'delete']);
 
     Route::get('/article/user/{userID}',[ArticleController::class,'getArticleUser']);
+    Route::get('/sesi-waktu/{userID}', [SesiWaktuController::class,'index']);
+
     Route::post('/sesi-waktu/add', [SesiWaktuController::class,'store']);
 });
 Route::middleware('auth:sanctum')->group(function() {
