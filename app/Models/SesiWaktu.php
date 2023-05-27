@@ -14,6 +14,6 @@ class SesiWaktu extends Model
 
     ];
     public function users() {
-        $this->belongsTo(User::class,'id_user','id');
+      return  $this->belongsTo(User::class,'id_user','id');
     }
 }
