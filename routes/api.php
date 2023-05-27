@@ -4,6 +4,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MetodePembayaranController;
 use App\Http\Controllers\PsikologController;
+use App\Http\Controllers\SesiWaktuController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -14,6 +15,7 @@ Route::middleware(['auth:sanctum','psikolog'])->group(function() {
     Route::delete('/article/{id}', [ArticleController::class,'delete']);
 
     Route::get('/article/user/{userID}',[ArticleController::class,'getArticleUser']);
+    Route::post('/sesi-waktu/add', [SesiWaktuController::class,'store']);
 });
 Route::middleware('auth:sanctum')->group(function() {
     Route::get('/user', [UserController::class, 'index']);

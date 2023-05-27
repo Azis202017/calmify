@@ -44,8 +44,7 @@ class UserController extends Controller
             ], 200);
         } catch (Exception $error) {
             return response()->json([
-                'message' => 'Something went wrong',
-                'error' => $error->getMessage(),
+                'message' => ' username dan password salah',
             ], 500);
         }
     }
@@ -55,6 +54,7 @@ class UserController extends Controller
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'email', 'max:255',],
+                'role' => ['required', 'string'],
             ]);
 
             if ($request->role == "psikolog") {
