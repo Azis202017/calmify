@@ -15,4 +15,9 @@ class SesiWaktuController extends Controller
             ], 200
         );
     }
+    public function store(Request $request) {
+        return response()->json([
+            'data' => SesiWaktu::create(['waktuSesi' => $request->waktu_sesi, 'id_user' => $request->id_user])
+        ]);
+    }
 }
