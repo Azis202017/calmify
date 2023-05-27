@@ -64,6 +64,10 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
     public function article() {
-        return $this->hasMany(Article::class,'id_user','id');
+        return $this->hasMany(Article::class,'id','id_user');
+    }
+    public function sesiWaktu() {
+        return $this->hasMany(SesiWaktu::class,'id','id_user');
+
     }
 }
