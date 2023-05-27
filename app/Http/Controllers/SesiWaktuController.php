@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class SesiWaktuController extends Controller
 {
-    public function index() {
-        $sesiWaktu = SesiWaktu::with(['users'])->get();
+    public function index($id) {
+        $sesiWaktu = SesiWaktu::with(['users'])->where('id_user', '=', $id)->get();
         return response()->json(
             [
                 'data' => $sesiWaktu
