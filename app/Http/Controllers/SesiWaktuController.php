@@ -21,9 +21,10 @@ class SesiWaktuController extends Controller
 
     {
         if (SesiWaktu::where('waktu_sesi', '=', $request->waktu_sesi)->first() && SesiWaktu::where('id_user', '=', $request->id_user)->first()) {
-            return response()->json(['data' =>  SesiWaktu::create(['waktu_sesi' => $request->waktu_sesi, 'id_user' => $request->id_user])], 200);
-        }else {
             return response()->json(['message' => 'Waktu sesi sudah ada']);
+        }else {
+            return response()->json(['data' =>  SesiWaktu::create(['waktu_sesi' => $request->waktu_sesi, 'id_user' => $request->id_user])], 200);
+
         }
         // return response()->json([
         //     'data' =>)
