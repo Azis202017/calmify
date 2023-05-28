@@ -26,8 +26,5 @@ class SesiWaktuController extends Controller
         } else {
             return response()->json(['data' =>  SesiWaktu::create(['waktu_sesi' => $request->waktu_sesi, 'id_user' => $request->id_user])], 200);
         }
-        // return response()->json([
-        //     'data' =>)
-        // ]);
     }
 }
