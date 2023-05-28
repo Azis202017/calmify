@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentarController;
 use App\Http\Controllers\CommunityController;
 use App\Http\Controllers\MetodePembayaranController;
+use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\PsikologController;
 use App\Http\Controllers\SesiWaktuController;
 use App\Http\Controllers\UserController;
@@ -31,6 +32,15 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/commentar/{id}', [CommentarController::class, 'index']);
 
     Route::post('/commentar/add/{id}', [CommentarController::class, 'store']);
+
+    Route::post('/commentar/add/{id}', [CommentarController::class, 'store']);
+
+
+});
+Route::middleware(['auth:sanctum', 'pengguna'])->group(function () {
+    Route::post('/pemesanan/add/', [PemesananController::class, 'store']);
+    Route::get('/invoice/', [PemesananController::class, 'index']);
+
 
 });
 
