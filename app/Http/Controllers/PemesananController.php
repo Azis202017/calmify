@@ -10,7 +10,7 @@ class PemesananController extends Controller
 {
     public function index()
     {
-        $pemesanan = pemesanan::with(['user', 'waktu_sesi', 'metode_pembayaran'])->get();
+        $pemesanan = pemesanan::with(['users', 'waktu_sesi', 'metode_pembayaran'])->get();
         return response()->json([
             'message' => 'invoice',
             'data' => $pemesanan,
